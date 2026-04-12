@@ -17,7 +17,7 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(node.url, "https://www.openai.com")
     def test_repr(self):
         node = TextNode("Hello, World!", TextType.PLAIN)
-        self.assertEqual(repr(node), "TextNode(Hello, World!,1,None)")
+        self.assertEqual(repr(node), "TextNode(Hello, World!,text,None)")
 
 
 if __name__ == "__main__":
