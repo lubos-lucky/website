@@ -49,7 +49,7 @@ class TestTextToTextNodes(unittest.TestCase):
         
 
     def test_bold_and_italic(self):
-        text = "This is **bold** and *italic* text and a `code block`"
+        text = "This is **bold** and _italic_ text and a `code block`"
         nodes = text_to_textnodes(text)
         self.assertEqual(len(nodes), 6)
         self.assertEqual(nodes[0].text, "This is ")
