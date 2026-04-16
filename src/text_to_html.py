@@ -12,8 +12,8 @@ def text_node_to_html_node(text_node):
     elif text_node.text_type == TextType.CODE:
         return LeafNode(tag="code", value=text_node.text)
     elif text_node.text_type == TextType.LINKS:
-        return LeafNode(tag="a", value=text_node.text, props=f' href="{text_node.url}"')
+        return LeafNode(tag="a", value=text_node.text, props={"href": text_node.url})
     elif text_node.text_type == TextType.IMAGES:
-        return LeafNode(tag="img", props=f' src="{text_node.url}" alt="{text_node.text}"')
+        return LeafNode(tag="img", value="", props={"src": text_node.url, "alt": text_node.text})
     else:
         raise Exception(f"Unsupported TextType: {text_node.text_type}")

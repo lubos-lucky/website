@@ -21,13 +21,16 @@ def markdown_to_blocks(markdown):
 def block_to_block_type(block):
     if block.startswith("#"):
         return BlockType.heading
-    elif block.startswith("```\n\n") and block.endswith("```"):
+    elif block.startswith("```") and block.endswith("```"):
         return BlockType.code
     elif block.startswith(">"):
-        return BlockType.quote
+            for line in block.split("\n"):
+                if not line.startswith(">"):
+                    return BlockType.paragraph
+            return BlockType.quote
     elif block.startswith("- "):
-        return BlockType.unordered_list
+            return BlockType.unordered_list
     elif block[0].isdigit() and block[1:3] == ". ":
-        return BlockType.ordered_list
+            return BlockType.ordered_list
     else:
-        return BlockType.paragraph
+            return BlockType.paragraph

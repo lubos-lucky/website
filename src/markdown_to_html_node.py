@@ -38,12 +38,14 @@ def markdown_to_html_node(markdown):
                     line = line[1:].strip()
                 new_lines.append(line)
             lines = " ".join(new_lines)
+            print(repr(lines))
             children = text_to_childen(lines)
+            #p_tag = ParentNode(tag="p", children=children)
             block_html_node = ParentNode(tag="blockquote", children=children)
             final_children.append(block_html_node)
         elif block_type == BlockType.code:
-            textnode = TextNode(block[4:-3], TextType.PLAIN)
-            
+            textnode = TextNode(block[4:-4], TextType.PLAIN)
+            repr(textnode)
             leaf_nodes = [text_node_to_html_node(textnode)]
             code_nodes = ParentNode(tag="code", children=leaf_nodes)
             block_html_node = ParentNode(tag="pre", children=[code_nodes])

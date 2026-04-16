@@ -1,13 +1,14 @@
-from textnode import TextNode, TextType
+
+from copystatic import copy_static_to_public
+import os
+import shutil
+from generate_page import generate_page, generate_pages_recursive
 
 def main():
-    # Example usage of TextNode
-    node1 = TextNode("Hello, World!", TextType.PLAIN)
-    node2 = TextNode("This is bold text.", TextType.BOLD)
-    node3 = TextNode("Visit OpenAI", TextType.LINKS, url="https://www.openai.com")
+    shutil.rmtree(os.path.join("./public"), ignore_errors=True)
+    copy_static_to_public()
+    generate_pages_recursive("./content", "./template.html", "./public")
     
-    print(node1)
-    print(node2)
-    print(node3)
+    
     
 if __name__ == "__main__":    main()

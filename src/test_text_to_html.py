@@ -29,10 +29,10 @@ class TestTextToHTML(unittest.TestCase):
         html_node = text_node_to_html_node(node)
         self.assertEqual(html_node.tag, "a")
         self.assertEqual(html_node.value, "Visit OpenAI")
-        self.assertEqual(html_node.props, ' href="https://www.openai.com"')
+        self.assertEqual(html_node.props, {'href': 'https://www.openai.com'})
     def test_images(self):
         node = TextNode("OpenAI Logo", TextType.IMAGES, url="https://www.openai.com/logo.png")
         html_node = text_node_to_html_node(node)
         self.assertEqual(html_node.tag, "img")
-        self.assertEqual(html_node.value, None)
-        self.assertEqual(html_node.props, ' src="https://www.openai.com/logo.png" alt="OpenAI Logo"')
+        self.assertEqual(html_node.value, "")
+        self.assertEqual(html_node.props, {'src': 'https://www.openai.com/logo.png', 'alt': 'OpenAI Logo'})

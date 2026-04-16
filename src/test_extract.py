@@ -1,4 +1,5 @@
 from extract import extract_markdown_images, extract_markdown_links
+from extract_title import extract_title
 import unittest
 
 class TestExtract(unittest.TestCase):
@@ -14,3 +15,6 @@ class TestExtract(unittest.TestCase):
             "This is text with a [link](https://example.com)"
         )
         self.assertListEqual([("link", "https://example.com")], matches)
+    def test_extract_title(self):
+        title = extract_title("# This is a title\nThis is some text")
+        self.assertEqual("This is a title", title)
